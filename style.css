@@ -4,15 +4,16 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.4s ease;
+    outline: none;
 }
 :root{
     --color-primary : rgba(26, 205, 255, 0.548);
     --color-secondary : rgba(12, 127, 147, 0.536);
-    --bg-color-principal : rgba(255, 255, 255, 0.08);
+    --bg-color-principal : rgba(255, 255, 255, 0.026);
+    --bg-color-secondary : rgba(255, 255, 255, 0.169);
     --border-size : 0.1px;
     --font-family : Helvetica;
     --font-size-p: 12px;
-
 }
 
 img{
@@ -24,6 +25,7 @@ html{
     background-image: url(ressources/images/backgroundimage.png);
     /* background-size: cover; */
     background-position: fixed;
+    background: opacity(81px);
     display: flex;
     min-height: 100vh;
     align-items: center;
@@ -41,8 +43,10 @@ html{
 }
 
 .right-content, .sider{
-    background: filter(blur(41px));
     padding: 5px;
+    --webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 100px rgba( 0, 0, 0, 0.3);
 }
 
 .sider{
@@ -76,15 +80,16 @@ html{
     justify-content: flex-start;
     background-color: var(--bg-color-principal);
     padding: 5px;
+    --webkit-backdrop-filter: blur(10px);
 }
 
 .sider .nav .new-task{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    border-bottom: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--bg-color-secondary);
     margin-bottom: 5em;
 }
 
@@ -93,7 +98,7 @@ html{
     font-size: var(--font-size-p);
     color: var(--color-primary);
     width: 100%;
-    padding-bottom: 1em;
+    /* padding-bottom: 1em; */
     color: rgb(0, 217, 255);
 }
 
@@ -103,37 +108,39 @@ html{
     margin-right: 2px;
     cursor: pointer;
     width: 2em;
-    background-color: var(--bg-color-principal);
-    width: 2em;
     height: 2em;
-    padding: 3px;
-    
+    background-color: var(--bg-color-principal);
 }
 
 .sider .nav .new-task button.btn:hover{
     background-color: rgba(255, 255, 255, 0.525);
 }
 .sider .nav .new-task button.btn img{
-    width: 8px;
-    height: 8px;
+    width: 15px;
+    height: 15px;
 }
 .nav button {
     width: 100%;
     height: 2.5em;
     margin: 4px;
-    background: var(--bg-color-principal);
+    background: var(--bg-color-secondary);
     border: none;
     cursor: pointer;
     border-radius: 5px;
     color: rgba(255, 255, 255, 0.833);
     font-weight: bold;
+    padding: 0 5px;
+    font-size: 12px;
+    text-align: left;
 }
 
 .nav button:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.114);
 }
 
-
+.nav button img{
+    float: right;
+}
 
 /* code pour les contenues principale de l'appli */
 
@@ -155,7 +162,7 @@ html{
     background-color: var(--bg-color-principal);
 }
 
-.bocks:nth-child(1){
+.bocks:nth-child(2){
     height: 100%;
 }
 
@@ -167,26 +174,26 @@ html{
     padding: 5px;
 }
 
-.bocks:nth-child(1) .header h2{
+.bocks:nth-child(2) .header h2{
     color:rgb(0, 217, 255);
     text-align: left;
     margin-bottom: 10px;
 }
 
-.bocks:nth-child(1) .header .request-box{
+.bocks:nth-child(2) .header .request-box{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 
-.bocks:nth-child(1) .header .request-box .search img{
+.bocks:nth-child(2) .header .request-box .search img{
     width: 10px;
     height: auto;
     margin-right: 5px;
     margin-left: 5px;
 }
-.bocks:nth-child(1) .header .request-box .search input{
+.bocks:nth-child(2) .header .request-box .search input{
     background: transparent;
     border: none;
     border-bottom: solid 0.1px rgba(255, 255, 255, 0.148);
@@ -199,7 +206,7 @@ html{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.bocks:nth-child(1) .header .request-box .filter{
+.bocks:nth-child(2) .header .request-box .filter{
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -207,7 +214,7 @@ html{
     border-radius: 5px;
 }
 
-.bocks:nth-child(1) .header .request-box .filter:hover {
+.bocks:nth-child(2) .header .request-box .filter:hover {
     background-color: rgba(255, 255, 255, 0.525);
 }
 
@@ -267,11 +274,11 @@ html{
     color: white;
     /* padding: 0 10px; */
     list-style-type: none;
-    margin-top: -0.9rem;
+    margin-top: -10px;
     border-radius: 5px;
 }
 .content-lst:hover{
-    box-shadow: 0 5px 25px rgba(21, 21, 21, 0.338);
+    box-shadow: 0 5px 25px rgba(49, 49, 49, 0.338);
     /* border: solid 0.1px rgba(165, 165, 165, 0.403); */
 }
 
@@ -335,4 +342,84 @@ html{
     background-color: transparent;
     padding-left: 10px;
     font-size: 12px;
+}
+
+/* code for modal zone for add new task */
+.overlay {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.485);
+    min-height: 100vh;
+    top: 0;
+    pointer-events: none;
+    right: 0;
+    z-index: 1;
+    display: none;
+}
+.add-task-box{
+    z-index: 111;
+    position: fixed;
+    /* overflow: hidden; */
+    width: 35em;
+    height: 250px;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    background: rgba(255, 255, 255, 0.759);
+    backdrop-filter: blur(30px);
+    margin-top: 10rem;
+    border-radius: 0.5rem;
+    display: none;
+}
+
+.add-task-box .header-new-task{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
+    width: 100%;
+    height: 10em;
+    padding: 0 10px;
+    margin-bottom: 1rem;
+}
+
+.add-task-box .header-new-task h1{
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-family: 0.5rem;
+}
+.add-task-box .header-new-task .close-btn{
+    margin-right: 5px;
+    font-size: 2rem;
+    color:rgb(240, 25, 255);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-task-box .header-new-task .close-btn:hover {
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.125);
+}
+.add-task-box .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.add-task-box .container .option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
 }

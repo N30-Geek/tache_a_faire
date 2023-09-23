@@ -16,7 +16,10 @@
 </head>
 
 <body>
+
     <div class="container">
+        <!-- hoverlysay -->
+        <div class="overlay"></div>
         <!-- menu en droite -->
         <div class="sider">
 
@@ -29,13 +32,31 @@
                     <button class="btn"><img src="ressources/images/add.png" class="icon-n-task"
                             alt="image new task icon"></button>
                 </div>
-                <button>Affiche les tâche terminer</button>
-                <button>Affiche les tâche encours</button>
+                <button>Affiche les tâche terminer<img src="ressources/images/done.png"
+                        alt="task checked icon"></button>
+                <button>Affiche les tâche encours<img src="ressources/images/unDone.png"
+                        alt="task checked icon"></button>
             </div>
 
         </div>
         <!-- contenus -->
         <div class="right-content">
+            <!-- le box de d'ajoute d'une nouvelle tâche dans l'appli  -->
+
+            <div class="add-task-box">
+                <div class="header-new-task">
+                    <h1>Ajouter une nouvelle tâche</h1>
+                    <div class="close-btn">&times;</div>
+                </div>
+                <div class="container">
+                    <div class="option">
+                        <label for="">Date :<input type="date"></label>
+                        <button class="add">Ajouter <img src="ressources/images/add.png" alt=""></button>
+                    </div>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+
             <div class="bocks">
                 <div class="header">
                     <h2>Liste de tâches</h2>
@@ -89,9 +110,7 @@
             </div>
 
 
-
-
-
+            <!-- the footer code here  -->
             <div class="bocks footer">
                 <p>&COPY;2023 Copyright | @GeekNeo</p>
                 <div class="followings">
@@ -104,6 +123,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
